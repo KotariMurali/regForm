@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DateFnsUtils from "@date-io/date-fns";
-import { TextField, Grid, Button, Card, MenuItem } from "@material-ui/core";
+import { TextField, Grid, Button, Card, MenuItem ,Paper} from "@material-ui/core";
 import '../../styles/regForm.css'
 import {
   MuiPickersUtilsProvider,
@@ -21,10 +21,18 @@ const gender = [
   },
 ];
 const Presentation = (props) => {
+  console.log(props.email);
   const {selectedDate,handleDateChange,handleFirstName,firstName,Email,Phone,handlePhone,handleEmail,LastName,handleLastName,EmailError,PhoneError,handleClear}=props
+ // console.log(email);
   return (
-    <div>
-      <Card className="Card">
+    <div className="login">
+      <div className="login__main">
+        <Paper className="login__card" elevation={1} />
+        <div className="login__form">
+          <h4>LOGIN FORM</h4>
+          <form>
+          
+          <Card className="Card">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -102,14 +110,32 @@ const Presentation = (props) => {
               </Grid>
             </MuiPickersUtilsProvider>
           </Grid>
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
            <Button disabled={EmailError&&PhoneError}>submit</Button>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Card>
-      {/* <button onClick={handleClear}>kmgksfmsd</button> */}
+            <div className="loginbuttons">
+              <Button
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={handleClear}
+              >
+                clear
+              </Button>
+              <Button size="small" variant="contained" color="primary">
+                login
+              </Button>
+            </div>
+            {/* <div>
+              <h4>forgot password?</h4>
+            </div> */}
+            <div className="login__footer"></div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
-
 export default Presentation;
